@@ -1,0 +1,5 @@
+# o vendor reconstrói-se com composer install; o composer.lock é que vai versionado
+/vendor/
+.env
+*.log
+.DS_Store

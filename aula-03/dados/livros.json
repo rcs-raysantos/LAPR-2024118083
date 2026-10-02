@@ -1,0 +1,6 @@
+[
+    { "id": 1, "titulo": "Memorial do Convento", "autor": "José Saramago", "ano": 1982, "estado": "disponivel" },
+    { "id": 2, "titulo": "A Cidade e as Serras", "autor": "Eça de Queirós", "ano": 1901, "estado": "emprestado" },
+    { "id": 3, "titulo": "Os Maias", "autor": "Eça de Queirós", "ano": 1888, "estado": "disponivel" },
+    { "id": 4, "titulo": "Mensagem", "autor": "Fernando Pessoa", "ano": 1934, "estado": "perdido" }
+]

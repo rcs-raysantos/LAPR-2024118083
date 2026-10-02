@@ -1,0 +1,12 @@
+{
+    "name": "pwls/biblioteca",
+    "description": "Biblioteca — desafio da aula 03 de PWLS",
+    "type": "project",
+    "autoload": {
+        "psr-4": { "Biblioteca\\": "src/" }
+    },
+    "require": { "php": "^8.3" },
+    "config": {
+        "sort-packages": true
+    }
+}
