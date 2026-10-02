@@ -4,8 +4,9 @@ declare(strict_types=1);
 namespace Biblioteca\Dominio;
 
 use DomainException;
+use JsonSerializable;
 
-final class Livro
+final class Livro implements JsonSerializable
 {
     /** @param list<string> $emprestimos */
     public function __construct(
@@ -19,9 +20,12 @@ final class Livro
 
     public function emprestar(string $leitor): void
     {
-        // TODO: recusar com uma DomainException se já estiver emprestado,
-        // registar o leitor e passar o estado a Estado::Emprestado.
-        throw new DomainException('Por implementar.');
+        if ($this->estaEmprestado()) {
+            throw new DomainException('Livro já está emprestado.');
+        }
+
+        $this->emprestimos[] = $leitor; // coloca o leitor na lista
+        $this->estado = Estado::Emprestado; // coloca o estado do livro como ocupado
     }
 
     public function estaEmprestado(): bool
@@ -32,5 +36,17 @@ final class Livro
     public function estado(): Estado
     {
         return $this->estado;
+    }
+
+    public function jsonSerialize(): array
+    {
+        return [
+            'id' => $this->id,
+            'titulo' => $this->titulo,
+            'autor' => $this->autor,
+            'ano' => $this->ano,
+            'estado' => $this->estado->name,
+            'emprestimos' => $this->emprestimos,
+        ];
     }
 }

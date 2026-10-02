@@ -1,22 +1,32 @@
 <?php
 declare(strict_types=1);
 
-// Uma só linha de carregamento: o PSR-4 escrito à mão em ../autoload.php trata do resto.
-// Quando tiverem Composer, troquem por ../vendor/autoload.php — nada mais muda.
-require __DIR__ . '/../autoload.php';
+require __DIR__ . '/../vendor/autoload.php';
 
 use Biblioteca\Aplicacao\ServicoLivros;
 use Biblioteca\Apresentacao\Vista;
+use Biblioteca\Dominio\Livro;
 use Biblioteca\Dominio\LivroNaoEncontrado;
+use Biblioteca\Infraestrutura\RepositorioJson;
 use Biblioteca\Infraestrutura\RepositorioEmMemoria;
 
 ini_set('display_errors', '1');
 error_reporting(E_ALL);
 header('Content-Type: text/html; charset=utf-8');
 
-// TODO: povoar o repositório com quatro livros do vosso domínio.
 // Enquanto estiver vazio, /livros responde 200 com a lista vazia — é o ponto de partida.
-$repo = new RepositorioEmMemoria([]);
+// $repo = new RepositorioEmMemoria([]);
+/*
+$repo = new RepositorioEmMemoria([
+    new Livro(1, 'O Senhor dos Anéis', 'J.R.R. Tolkien', 1954),
+    new Livro(2, '1984', 'George Orwell', 1949),
+    new Livro(3, 'Dom Casmurro', 'Machado de Assis', 1899),
+    new Livro(4, 'O Hobbit', 'J.R.R. Tolkien', 1937),
+]);
+*/
+
+// $servico = new ServicoLivros($repo);
+$repo = new RepositorioJson(__DIR__ . '/../dados/livros.json');
 
 $servico = new ServicoLivros($repo);
 $vista   = new Vista(__DIR__ . '/../views');

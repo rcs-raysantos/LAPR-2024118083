@@ -21,19 +21,19 @@ final class ServicoLivros
 
             /*
             if($ordem == 'titulo') {
-                return $a->getTitulo() <=> $b->getTitulo(); // <=> serve para comparar
+                return $a->titulo <=> $b->titulo; // <=> serve para comparar
             }
 
             if($ordem == 'ano'){
-                return $a->getAno() <=> $b->getAno();
+                return $a->ano <=> $b->ano();
             }
 
             return 0; // não ordena!
             */
 
             return match ($ordem) {
-                'ano' => $a->getAno() <=> $b->getAno(),
-                default => $a->getTitulo() <=> $b->getTitulo(), // "se não for ano, vai por título por padrão"
+                'ano' => $a->ano <=> $b->ano,
+                default => $a->titulo <=> $b->titulo, // "se não for ano, vai por título por padrão"
             };
         });
 

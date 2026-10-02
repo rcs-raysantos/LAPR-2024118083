@@ -21,13 +21,12 @@ final class RepositorioEmMemoria implements Repositorio
 
     public function guardar(Livro $livro): void
     {
-        // TODO: guardar o livro indexado pelo seu id.
+        $this->itens[$livro->id] = $livro;
     }
 
     public function porId(int $id): ?Livro
     {
-        // TODO: devolver o livro com este id, ou null se não existir.
-        return null;
+        return $this->itens[$id] ?? null;
     }
 
     public function todos(): array
